@@ -44,7 +44,7 @@ def sort_tfidf(word, label_list, lines_list, tfidf):
         c = 0
         for w in word:
             try:
-                posi_list[i][c] = word_list[i].index(w)
+                posi_list[i][c] = word_list[i].index(w.lower())
             except:
                 posi_list[i][c] = -1
             c += 1
@@ -71,16 +71,16 @@ def check(word, lines_list):
     for l in lines_list:
         tmp = l.split()
         for w in tmp:
-            if w in word:
+            if w.lower() in word:
                 pass
             else:
-                if w not in loss_list:
-                    loss_list.append(w)
+                if w.lower() not in loss_list:
+                    loss_list.append(w.lower())
     
-    with open("loss", "w") as f:
+    with open("loss.txt", "w") as f:
         output = "\n".join(loss_list)
         f.write(output)
-    with open("remain", "w") as f:
+    with open("remain.txt", "w") as f:
         output = "\n".join(word)
         f.write(output)
 #以下ファイルネーム入れて実行するだけ関数一覧
@@ -88,6 +88,7 @@ def check(word, lines_list):
 def default(file_name):
     ngram_list = read_csv(file_name)
     word, label_list, lines_list, tfidf = tfidf_cal(ngram_list)
+    check(word, lines_list)
     tfidf_list = sort_tfidf(word, label_list, lines_list, tfidf)
     write_csv(save_file, tfidf_list)
 
@@ -107,4 +108,4 @@ def non_time_series(file_name):
 
 #関数実行諸々
 if __name__ == "__main__":
-    non_time_series(file_name)
+    default(file_name)

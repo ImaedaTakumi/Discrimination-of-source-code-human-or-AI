@@ -557,6 +557,7 @@ dmap
 do
 does
 doing
+doller
 domore
 don
 donesofar
@@ -1052,6 +1053,7 @@ n_tests
 n_u_v
 name
 namespace
+nan
 nb
 nbl
 nc

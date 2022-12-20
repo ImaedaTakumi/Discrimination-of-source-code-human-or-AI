@@ -13,8 +13,8 @@ lstmを実行するコードだがこいつは最新版でないし使えるか�
 
 tfidf.py
 solution_{n}gram.csvからtfidfを求めるコード
-tfidfを辞書順にするか出現順にするかはファイルネーム入れて
-実行するだけ関数一覧を参照してください。
+コード冒頭のnを1～3の任意の値に変更することでngram.pyで作成したunigram、bigram、trigramで辞書化したファイルに対応
+tfidfを辞書順にするか出現順にするかは実行する関数で変更できる。※「ファイルネーム入れて実行するだけ関数一覧」を参照
 
 ngram.py
 solution_python_processing.csvからngramを適用したcsvを作成するコード
@@ -27,7 +27,7 @@ solution_python.csv
 
 solution_python_ai.csv
 AIが記述したプログラミングコードや問題が入っている(?)csvファイル
-solution_python_aiと同様の問題を取り扱っている
+solution_python.csvと同様の問題を取り扱っている
 
 solution_processing.csv
 csv_set.pyを用いてsolution_python.csvとsolution_python_ai.csvから

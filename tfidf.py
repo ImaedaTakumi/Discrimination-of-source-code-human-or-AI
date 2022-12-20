@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import csv
 
-n = "1" #ngramのn
+n = "3" #ngramのn
 file_name = f'./solution_{n}gram.csv' #読み込むファイル
 save_file = f'./tfidf_{n}gram.csv' #書き込むファイル
 
@@ -28,7 +28,7 @@ def tfidf_cal(ngram_list):
     for l in ngram_list:
         label_list.append([l[0]])
         lines_list.append(l[1])
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(token_pattern='(?u)\\b\\w+\\b')
     data = vectorizer.fit_transform(lines_list)
     word = vectorizer.get_feature_names_out()
     tfidf = data.toarray().tolist()

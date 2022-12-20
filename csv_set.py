@@ -38,7 +38,8 @@ subdict = {"\r":" ",
 "!":"exclamation",
 "?":"question",
 "@":"at",
-"$":"doller"
+"$":"doller",
+"_":"underscore"
 }
 
 processed_list = []

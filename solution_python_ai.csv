@@ -251,11 +251,11 @@ def minimum_steps_to_unify(t, test_cases):
             for i, road in enumerate(roads):
                 if countries[i] != countries[road]:
                     steps += 1
-                    # 統一する市を見つけた場合は、それらを統一する
+                    # 統一する市を見つけた場合はそれらを統一する
                     for j, c in enumerate(countries):
                         if c == countries[road]:
                             countries[j] = countries[i]
-                    # 統一したので、breakして次のステップに進む
+                    # 統一したのでbreakして次のステップに進む
                     break
         results.append(steps)
     return results

@@ -77,10 +77,10 @@ def check(word, lines_list):
                 if w.lower() not in loss_list:
                     loss_list.append(w.lower())
     
-    with open("loss.txt", "w") as f:
+    with open("loss.txt", "w", encoding="utf-8") as f:
         output = "\n".join(loss_list)
         f.write(output)
-    with open("remain.txt", "w") as f:
+    with open("remain.txt", "w", encoding="utf-8") as f:
         output = "\n".join(word)
         f.write(output)
 #以下ファイルネーム入れて実行するだけ関数一覧

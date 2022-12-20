@@ -41,8 +41,8 @@ e
 f
 u
 o
-���ꂷ��s���������ꍇ�́A�����𓝈ꂷ��
-���ꂵ���̂ŁAbreak���Ď��̃X�e�b�v�ɐi��
+統一する市を見つけた場合は、それらを統一する
+統一したので、breakして次のステップに進む
 2\n5
 2\n3
 4\n4

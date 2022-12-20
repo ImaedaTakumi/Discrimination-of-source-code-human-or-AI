@@ -10,6 +10,7 @@ def sub_text(text,sub_dict):
 # replace word list
 subdict = {"\r":" ",
 "\n":" ",
+"\r\n":" ",
 "(":"leftround",
 ")":"rightround",
 "[":"leftsquare",
@@ -36,7 +37,9 @@ subdict = {"\r":" ",
 "#":"hash",
 "!":"exclamation",
 "?":"question",
-"@":"at"
+"@":"at",
+"$":"doller",
+"_":"underscore"
 }
 
 processed_list = []

@@ -28,7 +28,7 @@ def tfidf_cal(ngram_list):
     for l in ngram_list:
         label_list.append([l[0]])
         lines_list.append(l[1])
-    vectorizer = TfidfVectorizer()
+    vectorizer = TfidfVectorizer(token_pattern='(?u)\\b\\w+\\b')
     data = vectorizer.fit_transform(lines_list)
     word = vectorizer.get_feature_names_out()
     tfidf = data.toarray().tolist()
@@ -44,7 +44,7 @@ def sort_tfidf(word, label_list, lines_list, tfidf):
         c = 0
         for w in word:
             try:
-                posi_list[i][c] = word_list[i].index(w)
+                posi_list[i][c] = word_list[i].index(w.lower())
             except:
                 posi_list[i][c] = -1
             c += 1
@@ -65,11 +65,30 @@ def sort_tfidf(word, label_list, lines_list, tfidf):
             result[i].append(0)
     return [l[:-empty_min] for l in result]
 
+#特徴量飛びを調べて出力するコード
+def check(word, lines_list):
+    loss_list = []
+    for l in lines_list:
+        tmp = l.split()
+        for w in tmp:
+            if w.lower() in word:
+                pass
+            else:
+                if w.lower() not in loss_list:
+                    loss_list.append(w.lower())
+    
+    with open("loss.txt", "w", encoding="utf-8") as f:
+        output = "\n".join(loss_list)
+        f.write(output)
+    with open("remain.txt", "w", encoding="utf-8") as f:
+        output = "\n".join(word)
+        f.write(output)
 #以下ファイルネーム入れて実行するだけ関数一覧
 #初期案のtfidf計算＆出力コード
 def default(file_name):
     ngram_list = read_csv(file_name)
     word, label_list, lines_list, tfidf = tfidf_cal(ngram_list)
+    check(word, lines_list)
     tfidf_list = sort_tfidf(word, label_list, lines_list, tfidf)
     write_csv(save_file, tfidf_list)
 
@@ -77,6 +96,7 @@ def default(file_name):
 def non_time_series(file_name):
     ngram_list = read_csv(file_name)
     word, label_list, lines_list, tfidf = tfidf_cal(ngram_list)
+    check(word, lines_list)
     tfidf_list = []
     for i in range(len(label_list)):
         tmp_list = [int(label_list[i][0])]
@@ -88,4 +108,4 @@ def non_time_series(file_name):
 
 #関数実行諸々
 if __name__ == "__main__":
-    non_time_series(file_name)
+    default(file_name)

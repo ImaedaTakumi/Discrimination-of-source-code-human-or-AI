@@ -1,7 +1,7 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 import csv
 
-n = "3" #ngramのn
+n = "1" #ngramのn
 file_name = f'./solution_{n}gram.csv' #読み込むファイル
 save_file = f'./tfidf_{n}gram.csv' #書き込むファイル
 
